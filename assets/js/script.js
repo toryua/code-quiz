@@ -17,7 +17,7 @@ function startQuiz() {
     function quizCountDown() {
         console.log("quizCountDown is called");
         
-        var quizTimeLeft = 18000;
+        var quizTimeLeft = 30;
         var timeInterval = setInterval(function() {
             if (quizTimeLeft > 0) {
              quizTimerEl.textContent = quizTimeLeft;
@@ -31,13 +31,16 @@ function startQuiz() {
     
     function quizQuestions() {
         console.log("quizQuestions is called!")
-        
-        var quizQuestions = [
-            {q: 'Question One is false. Type "f"', a: 'f'},
-            {q: 'Question Two is true. Type "t"', a: 't'},
-            {q: 'Question Three is true. Type "t"', a: 't'},
-        ];
-        
+
+        quizQEl.textContent = 'Why is Javascript so hard?';    
+        quizAEl.textContent = ['I like coffee', 'It is learning a different language', 'Bananas'];
+        let text = quizAEl.toString();
+
+
+      
+
+      
+
         var quizScore = 0;
         for (var i = 0; i < quizQuestions.length; i++) {
             var answer = confirm(quizQuestions[i].q);
@@ -50,12 +53,13 @@ function startQuiz() {
             } else {
                 quizTimeLeft--;
             };
-        console.log(quizScore);
+        
         }
+        console.log(playerName + " " + quizScore);
 
         function endGame () {
             console.log("endGame is called!");
-            window.alert("The quiz has ended! You scored " + quizScore + " . It's time to see how your score stacks up!");
+            window.alert("The quiz has ended! You scored " + quizScore + " . It's time to see how your score stacks up! Check the Console log for your score.");
 
             var highScore = localStorage.getItem("highscore");
             if (highScore === null) {
